@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Джарвис — голосовой ИИ-ассистент для компьютера</title>
+<style>
+:root{--bg:#f6f8fc;--card:#ffffff;--text:#0f172a;--dim:#475569;--line:#e2e8f0;--accent:#0ea5e9;--accent2:#7c3aed;--btn-text:#ffffff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1220;--card:#111a2e;--text:#e6edf7;--dim:#94a3b8;--line:#1e293b;--accent:#38bdf8;--accent2:#a78bfa;--btn-text:#04111f}}
+:root[data-theme="dark"]{--bg:#0b1220;--card:#111a2e;--text:#e6edf7;--dim:#94a3b8;--line:#1e293b;--accent:#38bdf8;--accent2:#a78bfa;--btn-text:#04111f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+main{max-width:960px;margin:0 auto;padding:0 20px 60px}
+.hero{text-align:center;padding:64px 0 40px}
+.orb{width:150px;height:150px;border-radius:50%;margin:40px auto 56px;position:relative;background:radial-gradient(circle at 40% 35%,#e2f8ff,var(--accent) 45%,#075985 100%);box-shadow:0 0 60px var(--accent);animation:breathe 3.2s ease-in-out infinite}
+.orb::before,.orb::after{content:"";position:absolute;border-radius:50%}
+.orb::before{inset:-22px;border:3px solid var(--accent);opacity:.7}
+.orb::after{inset:-40px;border:4px solid transparent;border-top-color:var(--accent2);border-bottom-color:var(--accent2);animation:spin 6s linear infinite}
+@keyframes breathe{50%{transform:scale(1.06)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb,.orb::after{animation:none}}
+h1{font-size:clamp(30px,6vw,48px);line-height:1.15;margin:0 0 12px}
+.lead{color:var(--dim);font-size:18px;max-width:560px;margin:0 auto 28px}
+.btn{display:inline-block;background:var(--accent);color:var(--btn-text);font-weight:700;font-size:18px;padding:14px 34px;border-radius:999px;text-decoration:none}
+.btn.off{opacity:.55;cursor:not-allowed}
+.note{color:var(--dim);font-size:14px;margin-top:12px}
+h2{font-size:26px;margin:56px 0 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.card b{display:block;margin-bottom:4px}
+.card span{color:var(--dim);font-size:15px}
+ol{padding-left:22px}
+ol li{margin-bottom:8px}
+code{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:14px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+details p{color:var(--dim);margin:8px 0 0}
+footer{text-align:center;color:var(--dim);font-size:14px;margin-top:48px}
+</style>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <div class="orb" aria-hidden="true"></div>
+    <h1>Джарвис</h1>
+    <p class="lead">Голосовой ИИ-ассистент для вашего компьютера. Скажите «Джарвис» — и он откроет программу, найдёт информацию или просто ответит на вопрос.</p>
+    <a id="dl" class="btn" href="#">Скачать для Windows (ZIP)</a>
+    <div id="note" class="note">Архив с Jarvis.exe · Windows 10/11, 64-бит · установка не нужна</div>
+  </section>
+
+  <h2>Что умеет</h2>
+  <div class="grid">
+    <div class="card"><b>Отвечает на любые вопросы</b><span>Подключается к ИИ и разговаривает как живой собеседник: объясняет, пишет тексты, подсказывает.</span></div>
+    <div class="card"><b>Открывает программы по словам</b><span>Скажите «открой яндекс музыку» — он сам найдёт нужное приложение среди установленных.</span></div>
+    <div class="card"><b>Управляет компьютером</b><span>Окна, громкость, скриншоты, таймеры, заметки, поиск в интернете, выключение и перезагрузка.</span></div>
+    <div class="card"><b>Живой голос</b><span>Мужской и женский голоса, регулировка скорости. Можно говорить или печатать команды в окне.</span></div>
+  </div>
+
+  <h2>Как начать</h2>
+  <ol>
+    <li>Скачайте архив, распакуйте его и запустите <code>Jarvis.exe</code> двойным щелчком.</li>
+    <li>Нажмите кнопку «Ключ ИИ» в окне и вставьте ключ (например, с ollama.com/settings/keys).</li>
+    <li>Скажите «Джарвис, привет» — и можно пользоваться.</li>
+  </ol>
+
+  <h2>Вопросы</h2>
+  <details><summary>Windows пишет «Защитник Windows предотвратил запуск»</summary><p>Это стандартное предупреждение для новых программ без цифровой подписи. Нажмите «Подробнее», затем «Выполнить в любом случае».</p></details>
+  <details><summary>Нужен ли интернет?</summary><p>Да: распознавание речи и ответы ИИ работают через интернет. Простые команды вроде открытия программ выполняются на самом компьютере.</p></details>
+  <details><summary>Как его остановить?</summary><p>Закройте окно или скажите «Джарвис, выключись». Прервать длинный ответ можно кнопкой «Прервать» или клавишей Esc.</p></details>
+
+  <footer>Джарвис · голосовой ассистент для Windows</footer>
+</main>
+<script>
+// Сюда вставляется прямая ссылка на файл Jarvis.exe (GitHub Releases, Google Диск, Яндекс Диск и т. п.)
+const DOWNLOAD_URL = "https://disk.yandex.ru/d/VW3N5zAE4Vn0jA";
+const a = document.getElementById("dl");
+if (DOWNLOAD_URL) {
+  a.href = DOWNLOAD_URL;
+  a.target = "_blank";
+  a.rel = "noopener";
+} else {
+  a.classList.add("off");
+  a.removeAttribute("href");
+  a.textContent = "Скоро будет доступно";
+}
+</script>
+</body>
+</html>
